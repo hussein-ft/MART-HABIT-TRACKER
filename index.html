@@ -1,43 +1,31 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Habit Tracker</title>
+    <title>Profile Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Smart Habit Tracker</h1>
-    </header>
-    
-    <section id="profile">
-        <h2>Profile</h2>
-        <img id="profilePic" src="images/default.png" alt="Profile Picture">
-        <p id="profileName">Your Name</p>
-        <input type="text" id="nameInput" placeholder="Enter your name">
-        <input type="file" id="fileInput">
-        <button id="saveProfile">Save Profile</button>
-        <p id="habitSummary">Tracked Habits: 0 | Completed Streaks: 0</p>
-    </section>
-
-    <section id="habitSection">
-        <h2>Your Habits</h2>
-        <input type="text" id="habitInput" placeholder="New habit...">
-        <button onclick="addHabit()">Add Habit</button>
-        <ul id="habitList"></ul>
-        <button onclick="location.href='habit.html'">View Habit</button>
-    </section>
-
-    <section id="progress">
-        <h2>Progress</h2>
-        <div id="progressContainer">
-            <div id="progressBar"></div>
+    <div class="container">
+        <h1>Your Profile</h1>
+        <div class="profile-picture">
+            <img src="placeholder.png" alt="Profile Picture" class="profile-img">
         </div>
-        <p id="motivationMessage"></p>
-    </section>
-    
-    <script src="index.js"></script>
+        <div class="profile-info">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <button id="save-profile">Save Profile</button>
+        </div>
+        <div class="habits">
+            <label for="new-habit">Add a New Habit</label>
+            <input type="text" id="new-habit" placeholder="New habit...">
+            <button id="add-habit">Add Habit</button>
+        </div>
+        <div>
+            <a href="habits.html" class="link">Go to Habit List</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

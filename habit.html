@@ -1,25 +1,21 @@
-	
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habit Details</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Habit List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1 id="habitTitle">Habit Details</h1>
-    </header>
-    
-    <section id="streakTracker">
-        <h2>Habit Streak</h2>
-        <p>Current Streak: <span id="streakCount">0</span> days</p>
-        <button onclick="markCompleted()">Mark as Completed</button>
-    </section>
-    
-    <a href="index.html" class="btn">Back to Home</a>
-    <script src="index.js"></script>
+    <div class="container">
+        <h1>Your Habits</h1>
+        <ul id="habit-list">
+            <!-- Habit items will be added dynamically using JavaScript -->
+        </ul>
+        <div>
+            <a href="index.html" class="link">Back to Profile</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
