@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Habit Tracker</h1>
+    </header>
+    
+    <section id="profile">
+        <h2>Profile</h2>
+        <img id="profilePic" src="images/default.png" alt="Profile Picture">
+        <p id="profileName">Your Name</p>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <input type="file" id="fileInput">
+        <button id="saveProfile">Save Profile</button>
+    </section>
+
+    <section id="habitSection">
+        <h2>Your Habits</h2>
+        <input type="text" id="habitInput" placeholder="New habit...">
+        <button onclick="addHabit()">Add Habit</button>
+        <ul id="habitList"></ul>
+        <button onclick="location.href='habit.html'">View Habit</button>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
