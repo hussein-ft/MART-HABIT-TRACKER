@@ -1,3 +1,4 @@
+	
 document.addEventListener("DOMContentLoaded", function() {
     loadProfile();
     loadHabits();
@@ -83,3 +84,4 @@ function loadProfile() {
     let profilePic = localStorage.getItem("profilePic") || "images/default.png";
     document.getElementById("profilePic").src = profilePic;
 }
+
