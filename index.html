@@ -3,29 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Habit Tracker - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Your Profile</h1>
-        <div class="profile-picture">
-            <img src="placeholder.png" alt="Profile Picture" class="profile-img">
-        </div>
-        <div class="profile-info">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name">
-            <button id="save-profile">Save Profile</button>
-        </div>
-        <div class="habits">
-            <label for="new-habit">Add a New Habit</label>
-            <input type="text" id="new-habit" placeholder="New habit...">
-            <button id="add-habit">Add Habit</button>
-        </div>
-        <div>
-            <a href="habits.html" class="link">Go to Habit List</a>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <h1>Habit Tracker</h1>
+    <form id="habitForm">
+        <label for="habitName">Enter a Habit:</label>
+        <input type="text" id="habitName" placeholder="Habit name..." required>
+        <button type="submit">Add Habit</button>
+    </form>
+    <a href="page2.html">Go to Habit Tracker</a>
 </body>
 </html>

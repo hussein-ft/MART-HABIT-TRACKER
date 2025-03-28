@@ -1,41 +1,58 @@
-// Save profile name
-const saveProfileButton = document.getElementById("save-profile");
-if (saveProfileButton) {
-    saveProfileButton.addEventListener("click", () => {
-        const nameInput = document.getElementById("name");
-        if (nameInput.value) {
-            localStorage.setItem("userName", nameInput.value); // Save to local storage
-            alert(`Profile Saved: ${nameInput.value}`);
-        } else {
-            alert("Please enter your name.");
-        }
-    });
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const habitForm = document.getElementById("habitForm");
+    const habitList = document.getElementById("habitList");
 
-// Add habits
-const addHabitButton = document.getElementById("add-habit");
-if (addHabitButton) {
-    addHabitButton.addEventListener("click", () => {
-        const habitInput = document.getElementById("new-habit");
-        if (habitInput.value) {
-            let habits = JSON.parse(localStorage.getItem("habits")) || [];
-            habits.push(habitInput.value);
-            localStorage.setItem("habits", JSON.stringify(habits));
-            alert(`New Habit Added: ${habitInput.value}`);
-            habitInput.value = ""; // Clear input
-        } else {
-            alert("Please enter a habit.");
-        }
-    });
-}
+    // Retrieve stored habits
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
-// Display habits on Habit List page
-const habitList = document.getElementById("habit-list");
-if (habitList) {
-    const habits = JSON.parse(localStorage.getItem("habits")) || [];
-    habits.forEach(habit => {
-        const li = document.createElement("li");
-        li.textContent = habit;
-        habitList.appendChild(li);
-    });
-}
+    // Save habits to localStorage
+    const saveHabits = () => {
+        localStorage.setItem("habits", JSON.stringify(habits));
+    };
+
+    // Render habits
+    const renderHabits = () => {
+        if (habitList) {
+            habitList.innerHTML = habits
+                .map((habit, index) => {
+                    return `
+                        <div>
+                            <p>${habit.name} - ${habit.completed ? "✔️ Completed" : "❌ Not Completed"}</p>
+                            <button onclick="toggleCompletion(${index})">Mark ${habit.completed ? "Incomplete" : "Complete"}</button>
+                        </div>
+                    `;
+                })
+                .join("");
+        }
+    };
+
+    // Add a new habit
+    if (habitForm) {
+        habitForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const habitName = document.getElementById("habitName").value;
+            habits.push({ name: habitName, completed: false });
+            saveHabits();
+            alert("Habit Added!");
+            habitForm.reset();
+        });
+    }
+
+    // Toggle habit completion
+    window.toggleCompletion = (index) => {
+        habits[index].completed = !habits[index].completed;
+        saveHabits();
+        renderHabits();
+    };
+
+    // Clear habit history
+    window.clearHistory = () => {
+        habits = [];
+        saveHabits();
+        renderHabits();
+        alert("History Cleared!");
+    };
+
+    // Initialize the habit list if on Page 2
+    renderHabits();
+});

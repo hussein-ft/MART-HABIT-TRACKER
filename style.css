@@ -1,76 +1,40 @@
-/* General Styling */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
+    color: #4caf50;
+}
+
+form, #habitList {
+    margin-top: 20px;
 }
 
 input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px 0;
-  width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
-button:hover {
-  background-color: #45a049;
+a {
+    text-decoration: none;
+    color: #0066cc;
+    display: block;
+    margin-top: 20px;
 }
 
-.link {
-  text-decoration: none;
-  color: #4CAF50;
-  font-weight: bold;
+a:hover {
+    color: #ff4500;
 }
-
-.link:hover {
-  color: #45a049;
-}
-
-/* Habit List */
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 10px 0;
-  font-size: 16px;
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-}
-
