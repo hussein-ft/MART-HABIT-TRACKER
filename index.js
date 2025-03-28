@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const habitForm = document.getElementById("habitForm");
     const habitList = document.getElementById("habitList");
 
-    // Retrieve stored habits
+    // Retrieve stored habits from localStorage
     let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
     // Save habits to localStorage
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("habits", JSON.stringify(habits));
     };
 
-    // Render habits
+    // Render habits in the habit list
     const renderHabits = () => {
         if (habitList) {
             habitList.innerHTML = habits
@@ -31,10 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
         habitForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const habitName = document.getElementById("habitName").value;
-            habits.push({ name: habitName, completed: false });
-            saveHabits();
-            alert("Habit Added!");
-            habitForm.reset();
+            if (habitName.trim() !== "") {
+                habits.push({ name: habitName.trim(), completed: false });
+                saveHabits();
+                alert("Habit Added!");
+                habitForm.reset();
+            } else {
+                alert("Habit name cannot be empty.");
+            }
         });
     }
 
@@ -47,12 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Clear habit history
     window.clearHistory = () => {
-        habits = [];
-        saveHabits();
-        renderHabits();
-        alert("History Cleared!");
+        if (confirm("Are you sure you want to clear all habits?")) {
+            habits = [];
+            saveHabits();
+            renderHabits();
+            alert("History Cleared!");
+        }
     };
 
-    // Initialize the habit list if on Page 2
+    // Initialize habit list on Page 2
     renderHabits();
 });
