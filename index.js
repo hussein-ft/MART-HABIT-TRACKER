@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const habitForm = document.getElementById("habitForm");
     const habitList = document.getElementById("habitList");
 
-    // Retrieve stored habits from localStorage
+    // Load habits from localStorage
     let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
     // Save habits to localStorage
@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const renderHabits = () => {
         if (habitList) {
             habitList.innerHTML = habits
-                .map((habit, index) => {
-                    return `
-                        <div>
-                            <p>${habit.name} - ${habit.completed ? "✔️ Completed" : "❌ Not Completed"}</p>
-                            <button onclick="toggleCompletion(${index})">Mark ${habit.completed ? "Incomplete" : "Complete"}</button>
-                        </div>
-                    `;
-                })
+                .map((habit, index) => `
+                    <div>
+                        <p>${habit.name} - ${habit.completed ? "✔️ Completed" : "❌ Not Completed"}</p>
+                        <button onclick="toggleCompletion(${index})">
+                            Mark as ${habit.completed ? "Incomplete" : "Complete"}
+                        </button>
+                    </div>
+                `)
                 .join("");
         }
     };
@@ -30,14 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (habitForm) {
         habitForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            const habitName = document.getElementById("habitName").value;
-            if (habitName.trim() !== "") {
-                habits.push({ name: habitName.trim(), completed: false });
+            const habitName = document.getElementById("habitName").value.trim();
+            if (habitName) {
+                habits.push({ name: habitName, completed: false });
                 saveHabits();
-                alert("Habit Added!");
+                alert("Habit added!");
                 habitForm.reset();
             } else {
-                alert("Habit name cannot be empty.");
+                alert("Habit name cannot be empty!");
             }
         });
     }
@@ -49,16 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
         renderHabits();
     };
 
-    // Clear habit history
+    // Clear all habits
     window.clearHistory = () => {
         if (confirm("Are you sure you want to clear all habits?")) {
             habits = [];
             saveHabits();
             renderHabits();
-            alert("History Cleared!");
+            alert("All habits cleared!");
         }
     };
 
-    // Initialize habit list on Page 2
+    // Render habits on Page 2
     renderHabits();
 });
