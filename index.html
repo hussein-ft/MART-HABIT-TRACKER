@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
 </head>
 <body>
-    <h1>Habit Tracker</h1>
-    <form id="habitForm">
-        <label for="habitName">Enter a Habit:</label>
-        <input type="text" id="habitName" placeholder="Habit name..." required>
-        <button type="submit">Add Habit</button>
-    </form>
-    <a href="index.js">Go to Habit Tracker</a>
+    <div class="container">
+        <header>
+            <h1>Habit Tracker</h1>
+            <p>Welcome, <span id="userName">User</span></p>
+        </header>
+
+        <main>
+            <form id="habitForm">
+                <label for="habitName">Habit Name:</label>
+                <input type="text" id="habitName" placeholder="Enter habit name" required>
+
+                <label for="habitGoal">Goal (Days):</label>
+                <input type="number" id="habitGoal" placeholder="Number of days" required min="1">
+
+                <button type="submit">Add Habit</button>
+            </form>
+
+            <h2>Your Habits</h2>
+            <div id="habitItems"></div> <!-- Habits added dynamically here -->
+        </main>
+
+        <footer>
+            <a href="history.html" class="view-history-btn">View Habit History</a> <!-- Link to History Page -->
+        </footer>
+    </div>
+
+    <script src="index.js"></script> <!-- External JavaScript -->
 </body>
 </html>
