@@ -1,29 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const habitHistoryTable = document.querySelector("#habitHistory tbody");
+    const habitForm = document.getElementById("habitForm");
+    const habitNameInput = document.getElementById("habitName");
+    const habitGoalInput = document.getElementById("habitGoal");
+    const habitItems = document.getElementById("habitItems");
 
-    // Mock data for habit history
-    const habitData = [
-        { date: "2025-03-25", name: "Morning Walk", status: "Completed" },
-        { date: "2025-03-26", name: "Drink Water", status: "Missed" },
-        { date: "2025-03-27", name: "Meditation", status: "Completed" }
-    ];
+    // Add habit functionality
+    habitForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    habitData.forEach(entry => {
-        const row = document.createElement("tr");
+        const habitName = habitNameInput.value.trim();
+        const habitGoal = habitGoalInput.value.trim();
 
-        const dateCell = document.createElement("td");
-        dateCell.textContent = entry.date;
-
-        const nameCell = document.createElement("td");
-        nameCell.textContent = entry.name;
-
-        const statusCell = document.createElement("td");
-        statusCell.textContent = entry.status;
-
-        row.appendChild(dateCell);
-        row.appendChild(nameCell);
-        row.appendChild(statusCell);
-
-        habitHistoryTable.appendChild(row);
+        if (habitName && habitGoal) {
+            addHabit(habitName, habitGoal);
+            habitNameInput.value = ""; // Clear inputs
+            habitGoalInput.value = "";
+        }
     });
+
+    function addHabit(name, goal) {
+        const habitDiv = document.createElement("div");
+        habitDiv.className = "habit-item";
+
+        const habitText = document.createElement("span");
+        habitText.textContent = `${name} - Goal: ${goal} days`;
+        habitDiv.appendChild(habitText);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete-btn";
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", () => habitItems.removeChild(habitDiv));
+
+        habitDiv.appendChild(deleteBtn);
+        habitItems.appendChild(habitDiv);
+    }
 });

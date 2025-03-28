@@ -13,14 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (habitName && habitGoal) {
           addHabit(habitName, habitGoal);
-          habitNameInput.value = "";
+          habitNameInput.value = ""; // Clear inputs
           habitGoalInput.value = "";
       }
   });
 
   function addHabit(name, goal) {
       const habitDiv = document.createElement("div");
-      habitDiv.textContent = `${name} - Goal: ${goal} days`;
+      habitDiv.className = "habit-item";
+
+      const habitText = document.createElement("span");
+      habitText.textContent = `${name} - Goal: ${goal} days`;
+      habitDiv.appendChild(habitText);
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-btn";
+      deleteBtn.textContent = "Delete";
+      deleteBtn.addEventListener("click", () => habitItems.removeChild(habitDiv));
+
+      habitDiv.appendChild(deleteBtn);
       habitItems.appendChild(habitDiv);
   }
 });
