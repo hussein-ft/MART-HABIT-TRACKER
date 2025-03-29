@@ -35,3 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         habitItems.appendChild(habitDiv);
     }
 });
+// Save data to local storage in index.html
+const habits = [
+    { date: "2025-03-28", name: "Daily Exercise", status: "Completed" },
+    { date: "2025-03-29", name: "Drink Water", status: "Missed" }
+];
+localStorage.setItem("habitHistory", JSON.stringify(habits));
+
+// Retrieve data in history.html
+const storedHabits = JSON.parse(localStorage.getItem("habitHistory") || "[]");
