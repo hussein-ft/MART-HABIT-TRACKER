@@ -23,3 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
         statusCell.textContent = habit.status;
     });
 });
+   const storedHabits = JSON.parse(localStorage.getItem("habitHistory") || "[]");
+   document.addEventListener("DOMContentLoaded", () => {
+    const habitHistoryTable = document.getElementById("habitHistory").getElementsByTagName("tbody")[0];
+
+    // Clear existing rows if any
+    habitHistoryTable.innerHTML = "";
+
+    // Populate the table dynamically with data from localStorage
+    storedHabits.forEach(habit => {
+        const row = habitHistoryTable.insertRow(); // Create a new row
+
+        // Add cells for Date, Habit Name, and Status
+        const dateCell = row.insertCell(0);
+        const nameCell = row.insertCell(1);
+        const statusCell = row.insertCell(2);
+
+        // Fill the cells with data
+        dateCell.textContent = habit.date;
+        nameCell.textContent = habit.name;
+        statusCell.textContent = habit.status;
+    });
+});
+localStorage.setItem("habitHistory", JSON.stringify(habits));
